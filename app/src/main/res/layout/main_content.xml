@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.coffee.widget.motionlayout.DrawerContent
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutDescription="@xml/main_content_drawer_scene">
+
+        <com.coffee.widget.motionlayout.MotionCoordinatorLayout
+            android:id="@+id/coordinatorLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+<!--            android:background="@drawable/coordinator_bg"-->
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/toolbar_max_height"
+                android:theme="@style/AppTheme.AppBarOverlay"
+                android:clipToPadding="true">
+
+                <include
+                    android:id="@+id/header_include"
+                    layout="@layout/content_header" />
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <include
+                android:id="@+id/content_include"
+                layout="@layout/content_container" />
+
+        </com.coffee.widget.motionlayout.MotionCoordinatorLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp"
+            android:contentDescription="email"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@android:drawable/ic_dialog_email" />
+
+    </com.coffee.widget.motionlayout.DrawerContent>
+
+</layout>

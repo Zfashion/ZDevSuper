@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--<androidx.core.widget.NestedScrollView
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".SecondFragment"
+        android:background="@color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <Button
+                android:id="@+id/button_second"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/previous"
+                app:layout_constraintBottom_toTopOf="@id/textview_second"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textview_second"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/lorem_ipsum"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/button_second" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>-->
+
+<!--    可滑动子控件到任意位置   -->
+    <!--<com.coffee.widget.viewdrag.DragLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/second_color"
+            android:gravity="center"
+            android:text="one"
+            app:layout_constraintBottom_toTopOf="@+id/textView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"/>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="#8945"
+            android:gravity="center"
+            android:text="two"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView1"
+            app:layout_constraintBottom_toTopOf="@+id/textView3"/>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="#A602FF"
+            android:gravity="center"
+            android:text="three"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    </com.coffee.widget.viewdrag.DragLayout>-->
+
+
+    <!--    滑动子控件到任意位置后，自动回到原来位置   -->
+    <!--<com.coffee.widget.viewdrag.DragAutoBackLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/second_color"
+            android:gravity="center"
+            android:text="one"
+            app:layout_constraintBottom_toTopOf="@+id/textView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"/>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="#8945"
+            android:gravity="center"
+            android:text="two"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView1"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </com.coffee.widget.viewdrag.DragAutoBackLayout>-->
+
+    <!--<com.coffee.widget.viewdrag.DragEdgeTrackerLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/second_color"
+            android:gravity="center"
+            android:text="one"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </com.coffee.widget.viewdrag.DragEdgeTrackerLayout>-->
+
+
+
+    <androidx.core.widget.NestedScrollView
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragment.SecondFragment"
+        android:background="@color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.coffee.widget.round.RoundConstraintLayout
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView1"
+                android:layout_marginTop="30dp"
+                app:round_radius="50dp"
+                app:stroke_size="10dp"
+                app:stroke_color="#FF889900"
+                android:background="@color/white">
+                <!--            app:rRadius="40dp"-->
+
+                <!--<ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/earth"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>-->
+
+            </com.coffee.widget.round.RoundConstraintLayout>
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@color/second_color"
+                android:gravity="center"
+                android:text="one"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+           <!-- <com.coffee.widget.round.RoundImageView
+                android:id="@+id/roundImg"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/earth"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/textView1"
+                android:layout_marginBottom="30dp"
+                app:round_radius="60dp"
+                app:stroke_size="15dp"
+                app:stroke_color="#FF889900"/>-->
+
+            <com.coffee.widget.shadow.ShadowInnerConstraintLayout
+                android:id="@+id/shadow_1"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView1"
+                android:layout_marginTop="40dp">
+
+                <TextView
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_width="200dp"
+                    android:layout_height="150dp"
+                    android:background="@drawable/blue_round_bg"
+                    app:layout_shadowColor="#805468A5"
+                    app:layout_shadowRadius="8dp"
+                    app:layout_shadowRoundRadius="5dp"
+                    app:layout_yOffset="2dp" />
+
+            </com.coffee.widget.shadow.ShadowInnerConstraintLayout>
+
+            <com.coffee.widget.shadow.ShadowConstraintLayout
+                android:id="@+id/shadow_2"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/shadow_1"
+                android:background="@drawable/blue_round_bg"
+                android:layout_marginTop="40dp"
+                app:layout_shadowColor="#805468A5"
+                app:layout_shadowRadius="8dp"
+                app:layout_shadowRoundRadius="5dp"
+                app:layout_yOffset="2dp">
+
+
+            </com.coffee.widget.shadow.ShadowConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

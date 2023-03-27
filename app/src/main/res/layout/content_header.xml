@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.coffee.widget.motionlayout.CollapsibleMotionToolbar
+        android:id="@+id/collapsible_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        app:layoutDescription="@xml/main_header_scene"
+        app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/background"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbar_max_height"
+            android:scaleType="centerCrop"
+            android:src="@drawable/car" />
+
+        <View
+            android:id="@+id/layout_color"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/second_color" />
+
+        <TextView
+            android:id="@+id/label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tool"
+            android:textColor="@color/black"
+            android:textSize="32sp"
+            tools:layout_editor_absoluteX="330dp"
+            tools:layout_editor_absoluteY="157dp" />
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:navigationIcon="@drawable/ic_round_menu_open"
+            app:title="@string/app_name" />
+
+    </com.coffee.widget.motionlayout.CollapsibleMotionToolbar>
+
+</layout>

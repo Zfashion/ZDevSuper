@@ -1,0 +1,119 @@
+
+
+String vn //版本号
+var dev_period = 1//dev发版周期 一周/次
+
+var masterNum = 3 //master版本号 要每次手动修改
+var devNum = Math.floorDiv(getDifferWeek(),dev_period)//dev版本号; 总星期/发版周期 取地板数
+
+if (getGitBranch().equals("dev")) { //dev
+    vn = "0." + masterNum + "." + devNum
+} else if (getGitBranch().equals("master")) { //master
+    vn = "0." + masterNum + ".0"
+} else { //其他功能分支版本号跟着dev走
+    vn = "0." + masterNum + "." + devNum
+}
+
+var branchName = getGitBranch();
+String commitName = getGitCommit();
+String buildTime = releaseTime();
+
+
+android.applicationVariants.all { variant ->
+
+    variant.outputs.each { output ->
+        output.processManifest.doLast {
+            if (variant.flavorName.equals("phone")){
+                def manifestFile = new File(output.processManifestProvider.get().multiApkManifestOutputDirectory.get().getAsFile(), "AndroidManifest.xml")
+                // Stores the contents of the manifest.
+                def manifestContent = manifestFile.getText()
+                // Changes the version code in the stored text.
+                manifestContent = manifestContent.replace('android:sharedUserId="android.uid.system"', "")
+                println "修改后的清单内容 = " + manifestContent
+                // Overwrites the manifest with the new text.
+                manifestFile.write(manifestContent)
+            }
+
+        }
+    }
+
+    variant.outputs.all {
+        // 自定义生成的apk名称
+        outputFileName = "VPA623_v${vn}_${branchName}_${commitName}_${buildTime}_${variant.buildType.name}.apk"
+    }
+
+    def flavorName = variant.flavorName
+    println "flavorName= " + flavorName
+
+    def buildType = variant.buildType.name
+    println "buildType= " + buildType
+
+    def apkPath = rootDir.absolutePath + '/app/buildApk/' + flavorName + "/" + buildType
+    File file = new File(apkPath)
+
+    variant.assemble.doLast {
+        copy {
+            variant.outputs.all { variantOutput ->
+                copy {
+                    from variantOutput.outputFile
+                    into file
+                }
+            }
+        }
+    }
+}
+
+
+static def releaseTime() {
+    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("GMT+08:00"))
+}
+
+static def getGitBranch() {
+    return 'git symbolic-ref --short -q HEAD'.execute().text.trim()
+}
+
+static def getGitCommit() {
+    return 'git log --pretty=format:%h -1'.execute().text.trim()
+}
+
+static def getDifferWeek() {
+    Calendar calendar = Calendar.getInstance();//日历类的实例化
+    //calendar.set(2022, 5 - 1, 1);//设置日历时间，月份必须减一
+    calendar.set(2022, 5 - 1, 13);//设置日历时间，月份必须减一
+    Date startTime = calendar.getTime(); // 从一个 Calendar 对象中获取 Date 对象
+    Date endTime = new Date(System.currentTimeMillis());
+    Calendar fromCalendar = Calendar.getInstance();
+    fromCalendar.setTime(startTime);
+    fromCalendar.set(Calendar.HOUR_OF_DAY, 0);
+    fromCalendar.set(Calendar.MINUTE, 0);
+    fromCalendar.set(Calendar.SECOND, 0);
+    fromCalendar.set(Calendar.MILLISECOND, 0);
+
+    Calendar toCalendar = Calendar.getInstance();
+    toCalendar.setTime(endTime);
+    toCalendar.set(Calendar.HOUR_OF_DAY, 0);
+    toCalendar.set(Calendar.MINUTE, 0);
+    toCalendar.set(Calendar.SECOND, 0);
+    toCalendar.set(Calendar.MILLISECOND, 0);
+    def a = (toCalendar.getTime().getTime() - fromCalendar.getTime().getTime())
+    def b = (1000 * 60 * 60 * 24)
+    def c =  a/b //计算有多少天
+    return (Integer)(c/7);//计算有多少个星期
+}
+
+
+/*//将build生成的apk放到外层文件
+String fPath = "${buildDir.absolutePath}\\outputs\\apk"
+println fPath
+File ifile = new File(fPath)
+
+String oPath = "${rootDir.absolutePath}\\app\\buildApk"
+println oPath
+File ofile = new File(oPath)
+
+copy {
+    from ifile
+    into ofile
+}*/
+
+

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <attr name="round_radius" format="dimension"/>
+    <attr name="round_top_left_radius" format="dimension"/>
+    <attr name="round_top_right_radius" format="dimension"/>
+    <attr name="round_bottom_left_radius" format="dimension"/>
+    <attr name="round_bottom_right_radius" format="dimension"/>
+    <attr name="stroke_size" format="dimension"/>
+    <attr name="stroke_color" format="reference|color"/>
+    <attr name="is_circle" format="boolean"/>
+
+    <declare-styleable name="RoundHelper">
+        <attr name="round_radius"/>
+        <attr name="round_top_left_radius"/>
+        <attr name="round_top_right_radius"/>
+        <attr name="round_bottom_left_radius"/>
+        <attr name="round_bottom_right_radius"/>
+        <attr name="stroke_color"/>
+        <attr name="stroke_size"/>
+        <attr name="is_circle"/>
+    </declare-styleable>
+
+    <declare-styleable name="RoundConstraintLayout">
+        <attr name="round_radius"/>
+        <attr name="round_top_left_radius"/>
+        <attr name="round_top_right_radius"/>
+        <attr name="round_bottom_left_radius"/>
+        <attr name="round_bottom_right_radius"/>
+        <attr name="stroke_color"/>
+        <attr name="stroke_size"/>
+        <attr name="is_circle"/>
+    </declare-styleable>
+
+    <declare-styleable name="RoundImageView">
+        <attr name="round_radius"/>
+        <attr name="round_top_left_radius"/>
+        <attr name="round_top_right_radius"/>
+        <attr name="round_bottom_left_radius"/>
+        <attr name="round_bottom_right_radius"/>
+        <attr name="stroke_color"/>
+        <attr name="stroke_size"/>
+        <attr name="is_circle"/>
+    </declare-styleable>
+
+
+
+    <attr name="rRadius" format="dimension" />
+    <attr name="rLeftRadius" format="dimension" />
+    <attr name="rRightRadius" format="dimension" />
+    <attr name="rTopRadius" format="dimension" />
+    <attr name="rBottomRadius" format="dimension" />
+    <attr name="rTopLeftRadius" format="dimension" />
+    <attr name="rTopRightRadius" format="dimension" />
+    <attr name="rBottomLeftRadius" format="dimension" />
+    <attr name="rBottomRightRadius" format="dimension" />
+    <attr name="rStrokeWidth" format="dimension" />
+    <attr name="rStrokeColor" format="reference|color" />
+    <attr name="rNewLayer" format="boolean" />
+
+    <declare-styleable name="RoundCorner">
+        <attr name="rRadius" />
+        <attr name="rLeftRadius" />
+        <attr name="rRightRadius" />
+        <attr name="rTopRadius" />
+        <attr name="rBottomRadius" />
+        <attr name="rTopLeftRadius" />
+        <attr name="rTopRightRadius" />
+        <attr name="rBottomLeftRadius" />
+        <attr name="rBottomRightRadius" />
+        <attr name="rStrokeWidth" />
+        <attr name="rStrokeColor" />
+        <attr name="rNewLayer" />
+    </declare-styleable>
+
+
+    <declare-styleable name="ShadowConstraintLayout">
+        <attr name="layout_xOffset" format="dimension" />
+        <attr name="layout_yOffset" format="dimension" />
+        <attr name="layout_shadowColor" format="color" />
+        <attr name="layout_shadowRadius" format="dimension" />
+        <attr name="layout_shadowRoundRadius" format="dimension" />
+    </declare-styleable>
+
+    <!--  天气折线图  -->
+    <declare-styleable name="WeatherLineGraphView">
+        <!-- 星期、时段的文本大小 -->
+        <attr name="graph_weekTimeTextSize" format="dimension"/>
+        <!-- 星期、时段的文本颜色 -->
+        <attr name="graph_weekTimeTextColor" format="reference|color"/>
+        <!-- 日期顶部偏移俩 -->
+        <attr name="graph_dateMarginTop" format="dimension"/>
+        <!-- 日期文本大小 -->
+        <attr name="graph_dateTextSize" format="dimension"/>
+        <!-- 日期文本颜色 -->
+        <attr name="graph_dateTextColor" format="reference|color"/>
+        <!-- 天气图片的顶部偏移量 -->
+        <attr name="graph_imgMarginTop" format="dimension"/>
+        <!-- 天气文本的顶部偏移量 -->
+        <attr name="graph_weatherTextMarginTop" format="dimension"/>
+        <!-- 天气文本的大小 -->
+        <attr name="graph_weatherTextSize" format="dimension"/>
+        <!-- 天气文本的颜色 -->
+        <attr name="graph_weatherTextColor" format="reference|color"/>
+        <!-- 温度坐标文字的大小 -->
+        <attr name="graph_tempPointTextSize" format="dimension"/>
+        <!-- 温度坐标文字的颜色 -->
+        <attr name="graph_tempPointTextColor" format="reference|color"/>
+        <!-- 温度坐标点的半径 -->
+        <attr name="graph_tempPointRadius" format="dimension"/>
+        <!-- 温度坐标点的填充色 -->
+        <attr name="graph_tempPointColor" format="reference|color"/>
+        <!-- 温度坐标点与文字的间距 -->
+        <attr name="graph_tempPointTextMargin" format="dimension"/>
+        <!-- 折线的颜色 -->
+        <attr name="graph_lineColor" format="reference|color"/>
+        <!-- 折线的粗细大小 -->
+        <attr name="graph_lineSize" format="dimension"/>
+        <!-- 是否开启双折线 -->
+        <attr name="graph_openDoubleLine" format="boolean"/>
+    </declare-styleable>
+
+    <!--  圆点指示器  -->
+    <declare-styleable name="DotIndicatorView">
+        <!-- 指示器点数个数 -->
+        <attr name="dot_count" format="integer"/>
+        <!-- 指示器点数的半径 -->
+        <attr name="dot_radius" format="dimension"/>
+        <!-- 指示器点数之间的间距 -->
+        <attr name="dot_vertical_spacing" format="dimension"/>
+        <!-- 指示器选中的点数高度 -->
+        <attr name="dot_selected_height" format="dimension"/>
+        <!-- 指示器选中的点数圆角 -->
+        <attr name="dot_selected_corner" format="dimension"/>
+        <!-- 指示器选中的点数颜色 -->
+        <attr name="dot_selected_color" format="reference|color"/>
+        <!-- 指示器未选中的点数颜色 -->
+        <attr name="dot_unselected_color" format="reference|color"/>
+    </declare-styleable>
+
+</resources>

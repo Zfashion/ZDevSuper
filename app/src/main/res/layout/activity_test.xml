@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--<com.coffee.widget.weather.WeatherLineGraphView
+            android:id="@+id/weather_frame"
+            android:layout_width="2000dp"
+            android:layout_height="600dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>-->
+
+        <HorizontalScrollView
+            android:id="@+id/weather_frame"
+            android:layout_width="wrap_content"
+            android:layout_height="600dp"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <com.coffee.widget.weather.WeatherLineGraphView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="2dp"
+                    app:graph_weekTimeTextSize="28sp"
+                    app:graph_weekTimeTextColor="#E05F687A"
+                    app:graph_imgMarginTop="90dp"
+                    app:graph_weatherTextMarginTop="18dp"
+                    app:graph_weatherTextSize="28sp"
+                    app:graph_weatherTextColor="#171C2C"
+                    app:graph_tempPointTextSize="32sp"
+                    app:graph_tempPointTextColor="#E05F687A"
+                    app:graph_tempPointRadius="4dp"
+                    app:graph_tempPointColor="#2C7CEF"
+                    app:graph_tempPointTextMargin="15dp"
+                    app:graph_lineColor="#E05F687A"
+                    app:graph_lineSize="1dp"
+                    app:graph_openDoubleLine="false"/>
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+        <com.coffee.widget.dot.DotIndicatorView
+            android:id="@+id/dotView"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/weather_frame"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="100dp"/>
+
+        <Button
+            android:id="@+id/update"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:text="更新下标"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/dotView"
+            app:layout_constraintTop_toTopOf="@+id/dotView"
+            app:layout_constraintBottom_toBottomOf="@+id/dotView"
+            android:layout_marginEnd="20dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

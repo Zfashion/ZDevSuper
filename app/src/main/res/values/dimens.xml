@@ -1,0 +1,6 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="toolbar_max_height">220dp</dimen>
+    <dimen name="menu_width">220dp</dimen>
+    <dimen name="recycler_translate_x">-220dp</dimen>
+</resources>

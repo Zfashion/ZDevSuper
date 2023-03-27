@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragment.FirstFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <Button
+                android:id="@+id/button_first"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:text="@string/next"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:id="@+id/textview_first"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/lorem_ipsum"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/button_first" />
+
+            <HorizontalScrollView
+                android:id="@+id/weather_frame"
+                android:layout_width="wrap_content"
+                android:layout_height="400dp"
+                android:layout_marginTop="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textview_first">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <com.coffee.widget.weather.WeatherLineGraphView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingTop="2dp"
+                        app:graph_weekTimeTextSize="14sp"
+                        app:graph_weekTimeTextColor="#E05F687A"
+                        app:graph_imgMarginTop="20dp"
+                        app:graph_weatherTextMarginTop="9dp"
+                        app:graph_weatherTextSize="14sp"
+                        app:graph_weatherTextColor="#171C2C"
+                        app:graph_tempPointTextSize="16sp"
+                        app:graph_tempPointTextColor="#E05F687A"
+                        app:graph_tempPointRadius="4dp"
+                        app:graph_tempPointColor="#2C7CEF"
+                        app:graph_tempPointTextMargin="8dp"
+                        app:graph_lineColor="#E05F687A"
+                        app:graph_lineSize="1dp"
+                        app:graph_openDoubleLine="false"/>
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</layout>
