@@ -32,6 +32,11 @@ abstract class BaseActivity<VB: ViewDataBinding>: AppCompatActivity(), BaseCompo
         initData()
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
+
     /**
      * 提供跳转
      */

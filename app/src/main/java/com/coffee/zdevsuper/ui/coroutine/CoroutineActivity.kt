@@ -2,6 +2,8 @@ package com.coffee.zdevsuper.ui.coroutine
 
 import android.graphics.Color
 import androidx.lifecycle.lifecycleScope
+import com.coffee.base.ext.onClickDebounced
+import com.coffee.base.ext.onClickDebouncedAsync
 import com.coffee.base.ui.BaseActivity
 import com.coffee.base.utils.LogUtil
 import com.coffee.zdevsuper.databinding.ActivityCoroutineBinding
@@ -26,9 +28,6 @@ class CoroutineActivity: BaseActivity<ActivityCoroutineBinding>() {
     private val colorList = arrayListOf("#FFC678FA", "#FFCFAD47", "#FF31D1C2", "#FFDF5F36")
 
     private val str: StringBuilder = StringBuilder()
-
-
-
 
     private var index = 0
     override fun initData() {
@@ -147,16 +146,23 @@ class CoroutineActivity: BaseActivity<ActivityCoroutineBinding>() {
 
 
     override fun initView(vb: ActivityCoroutineBinding) {
-        vb.btnOne.setOnClickListener {
+        /*vb.btnOne.setOnClickListener {
             vb.tvOne.setBackgroundColor(Color.parseColor(colorList[temp]))
             if (temp < colorList.size - 1) { ++temp }
             else temp = 0
+        }*/
+        //测试防抖
+        vb.btnOne.onClickDebounced(lifecycleScope, 1000L) {
+            LogUtil.d("点击了")
+        }
+        vb.tvOne.onClickDebouncedAsync(lifecycleScope, 1000L) {
+            LogUtil.d("异步中，点击了")
         }
 
-        vb.output.setOnClickListener {
+        /*vb.output.setOnClickListener {
             val str = compose2?.get()
             vb.output.text = str
-        }
+        }*/
     }
 
 

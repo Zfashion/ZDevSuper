@@ -6,12 +6,14 @@ import android.view.ViewOutlineProvider
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import com.coffee.base.R
 import kotlinx.coroutines.*
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.actor
-import kotlinx.coroutines.channels.sendBlocking
+import kotlinx.coroutines.flow.*
 import kotlin.properties.ReadOnlyProperty
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
@@ -22,6 +24,66 @@ import kotlin.reflect.KProperty
  * @Author: ly-zfensheng
  * @CreateDate: 2022/6/17 9:18
  */
+
+
+/**
+ * 防抖机制更新
+ * >>> Attention!!!
+ * 该函数适合点击事件存在耗时任务的，action参数是suspend的
+ */
+fun View.onClickDebouncedAsync(
+    lifecycleCoroutineScope: LifecycleCoroutineScope,
+    delayMillis: Long = 500L,
+    action: suspend () -> Unit
+) {
+    val debounce = lifecycleCoroutineScope.coroutineContext + Dispatchers.IO
+    val events = Channel<Unit>(Channel.CONFLATED)
+    val job = lifecycleCoroutineScope.launch(debounce) {
+        events.consumeAsFlow()
+            .onEach {
+                action()
+                delay(delayMillis)
+            }
+            .collect()
+    }
+    setOnClickListener {
+        events.trySend(Unit)
+    }
+    //当带生命周期的协程作用域执行销毁时,取消所有点击事件的协程任务
+    lifecycleCoroutineScope.coroutineContext.job.invokeOnCompletion {
+        job.cancel()
+    }
+}
+
+/**
+ * 防抖机制更新
+ * 该函数适合点击事件必须就在主线程上执行的
+ */
+fun View.onClickDebounced(
+    lifecycleCoroutineScope: LifecycleCoroutineScope,
+    delayMillis: Long = 500L,
+    action: () -> Unit
+) {
+    val debounce = lifecycleCoroutineScope.coroutineContext + Dispatchers.IO
+    val events = Channel<Unit>(Channel.CONFLATED)
+    val job = lifecycleCoroutineScope.launch(debounce) {
+        events.consumeAsFlow()
+            .onEach {
+                withContext(Dispatchers.Main.immediate) {
+                    action()
+                }
+                delay(delayMillis)
+            }
+            .collect()
+    }
+    setOnClickListener {
+        events.trySend(Unit)
+    }
+    //当带生命周期的协程作用域执行销毁时,取消所有点击事件的协程任务
+    lifecycleCoroutineScope.coroutineContext.job.invokeOnCompletion {
+        job.cancel()
+    }
+}
 
 /**
  * 防止 控件 多次点击
