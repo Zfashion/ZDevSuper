@@ -1,7 +1,7 @@
 package com.coffee.zdevsuper.ui.coroutine
 
-import android.graphics.Color
 import androidx.lifecycle.lifecycleScope
+import com.coffee.base.common.CommonDialog
 import com.coffee.base.ext.onClickDebounced
 import com.coffee.base.ext.onClickDebouncedAsync
 import com.coffee.base.ui.BaseActivity
@@ -26,6 +26,8 @@ class CoroutineActivity: BaseActivity<ActivityCoroutineBinding>() {
     private val singleThreadPool = Executors.newSingleThreadExecutor()
     private var temp = 0
     private val colorList = arrayListOf("#FFC678FA", "#FFCFAD47", "#FF31D1C2", "#FFDF5F36")
+
+    private var commonDialog: CommonDialog? = null
 
     private val str: StringBuilder = StringBuilder()
 
@@ -153,7 +155,10 @@ class CoroutineActivity: BaseActivity<ActivityCoroutineBinding>() {
         }*/
         //测试防抖
         vb.btnOne.onClickDebounced(lifecycleScope, 1000L) {
-            LogUtil.d("点击了")
+            commonDialog = CommonDialog(this).apply {
+                setOwnerActivity(this@CoroutineActivity)
+            }
+            commonDialog?.show()
         }
         vb.tvOne.onClickDebouncedAsync(lifecycleScope, 1000L) {
             LogUtil.d("异步中，点击了")

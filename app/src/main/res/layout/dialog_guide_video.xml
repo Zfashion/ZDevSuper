@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="540dp"
+        android:layout_height="680dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@color/black">
+
+        <TextureView
+            android:id="@+id/textureView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            android:background="@android:color/transparent">
+
+            <ImageView
+                android:id="@+id/close"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:padding="10dp"
+                android:src="@mipmap/voice_icon_close"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="26dp"/>
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="这是个视频弹框"
+                android:textSize="38sp"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toEndOf="@+id/close"
+                app:layout_constraintTop_toTopOf="@+id/close"
+                app:layout_constraintBottom_toBottomOf="@+id/close"
+                android:layout_marginStart="32dp"/>
+
+            <ImageView
+                android:id="@+id/play_or_pause"
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginBottom="42dp"
+                android:src="@drawable/bg_selector_video_play_btn"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/current_pos"/>
+
+            <TextView
+                android:id="@+id/current_pos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:textColor="@color/white"
+                android:text="00:00"
+                android:layout_marginStart="26dp"
+                app:layout_constraintStart_toEndOf="@+id/play_or_pause"
+                app:layout_constraintTop_toTopOf="@+id/play_or_pause"
+                app:layout_constraintBottom_toBottomOf="@+id/play_or_pause"
+                app:layout_constraintEnd_toStartOf="@+id/seek_bar"/>
+
+            <SeekBar
+                android:id="@+id/seek_bar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:maxHeight="10dp"
+                android:minHeight="10dp"
+                android:progressDrawable="@drawable/bg_layer_seekbar_progress"
+                android:thumb="@drawable/bg_shape_seekbar_thumb"
+                android:layout_marginStart="24dp"
+                app:layout_constraintStart_toEndOf="@+id/current_pos"
+                app:layout_constraintTop_toTopOf="@+id/current_pos"
+                app:layout_constraintBottom_toBottomOf="@+id/current_pos"
+                app:layout_constraintEnd_toStartOf="@+id/total_pos"/>
+
+            <TextView
+                android:id="@+id/total_pos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:textColor="@color/white"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="36dp"
+                android:text="00:00"
+                app:layout_constraintStart_toEndOf="@+id/seek_bar"
+                app:layout_constraintTop_toTopOf="@+id/seek_bar"
+                app:layout_constraintBottom_toBottomOf="@+id/seek_bar"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

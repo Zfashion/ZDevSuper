@@ -11,12 +11,15 @@ import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.coffee.base.common.CommonDialog
 import com.coffee.base.ui.BaseActivity
 import com.coffee.zdevsuper.R
 import com.coffee.zdevsuper.ui.coroutine.CoroutineActivity
 import com.coffee.zdevsuper.databinding.ActivityMainBinding
 import com.coffee.zdevsuper.bean.SettingData
+import com.coffee.zdevsuper.ui.dialog.TestDialogActivity
 import com.coffee.zdevsuper.ui.ktx.KtxPracticeActivity
+import com.coffee.zdevsuper.ui.workmanager.WorkManagerActivity
 import com.drake.brv.utils.linear
 import com.drake.brv.utils.setup
 
@@ -57,8 +60,10 @@ class MainActivity: BaseActivity<ActivityMainBinding>() {
         vb.drawerLayout.setScrimColor(Color.TRANSPARENT)
 
         vb.includeContent.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAnchorView(R.id.fab).setAction("Action", null).show()
+            /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAnchorView(R.id.fab).setAction("Action", null).show()*/
+            val commonDialog = CommonDialog(this)
+            commonDialog.show()
         }
 
         createSetting()
@@ -75,8 +80,9 @@ class MainActivity: BaseActivity<ActivityMainBinding>() {
             it.add(SettingData("Coroutine", CoroutineActivity::class.java))
             it.add(SettingData("Flow", null))
             it.add(SettingData("Compose", null))
-            it.add(SettingData("WorkManager", null))
+            it.add(SettingData("WorkManager", WorkManagerActivity::class.java))
             it.add(SettingData("KtxPractice", KtxPracticeActivity::class.java))
+            it.add(SettingData("TestDialog", TestDialogActivity::class.java))
         }
 
         mBinding.includeMenu.settingRecycler

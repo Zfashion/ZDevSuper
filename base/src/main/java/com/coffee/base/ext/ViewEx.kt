@@ -10,6 +10,7 @@ import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import com.coffee.base.R
+import com.coffee.base.utils.LogUtil
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.actor
@@ -69,11 +70,13 @@ fun View.onClickDebounced(
     val job = lifecycleCoroutineScope.launch(debounce) {
         events.consumeAsFlow()
             .onEach {
+                LogUtil.d("收到事件，执行处理")
                 withContext(Dispatchers.Main.immediate) {
                     action()
                 }
-                delay(delayMillis)
+//                delay(delayMillis)
             }
+            .debounce(delayMillis)
             .collect()
     }
     setOnClickListener {
